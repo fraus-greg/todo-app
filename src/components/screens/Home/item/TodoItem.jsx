@@ -5,16 +5,27 @@ import CheckBox from './CheckBox'
 import { RxCross1 } from 'react-icons/rx'
 
 const TodoItem = ({ todo, changeTodo, removeTodo }) => {
-	useState()
+	const [todoHover, setTodoHover] = useState(false)
+
+	const handlerTodoHoverEnter = () => {
+		setTodoHover(true)
+	}
+	const handlerTodoHoverLeave = () => {
+		setTodoHover(false)
+	}
 	return (
-		<div className='w-full mb-4 p-5 flex items-center justify-between rounded-2xl bg-zinc-800 '>
+		<div
+			className='w-full mb-4 p-5 flex items-center justify-between rounded-2xl bg-zinc-800 '
+			onMouseEnter={handlerTodoHoverEnter}
+			onMouseLeave={handlerTodoHoverLeave}
+		>
 			<button className='flex items-center' onClick={() => changeTodo(todo.id)}>
 				<CheckBox isCompleted={todo.isCompleted} />
 				<span className={`${todo.isCompleted ? 'line-through' : ''}`}>
 					{todo.title}
 				</span>
 			</button>
-			<button onClick={() => removeTodo(todo.id)}>
+			<button className='' onClick={() => removeTodo(todo.id)}>
 				<RxCross1
 					className='text-gray-600 hover:text-red-700 ease-in-out duration-300'
 					size={24}
