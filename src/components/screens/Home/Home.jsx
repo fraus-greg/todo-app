@@ -26,7 +26,11 @@ const Home = () => {
 		setTodos(copy.filter((todo) => todo.id !== id))
 	}
 
-	let todosList = todos.map((todo) => {
+	const sortedTodos = [...todos].sort((a, b) =>
+		a.isCompleted !== b.isCompleted ? (a.isCompleted ? 1 : -1) : 0
+	)
+
+	let todosList = sortedTodos.map((todo) => {
 		return (
 			<TodoItem
 				key={todo.id}

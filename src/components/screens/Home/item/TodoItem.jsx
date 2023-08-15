@@ -27,13 +27,12 @@ const TodoItem = ({ todo, changeTodo, removeTodo }) => {
 				</span>
 			</button>
 			<button
-				className={`${
-					todoHover && todo.isCompleted ? 'opacity-100' : 'opacity-0'
-				}`}
+				className={`${todoHover && todo.isCompleted ? 'opacity-100' : 'opacity-0'
+					}`}
 				onClick={() => removeTodo(todo.id)}
 			>
 				<RxCross1
-					className='text-gray-600 hover:text-red-700 ease-in-out'
+					className='text-gray-600 hover:text-red-700 ease-in-out duration-150'
 					size={24}
 				/>
 			</button>
