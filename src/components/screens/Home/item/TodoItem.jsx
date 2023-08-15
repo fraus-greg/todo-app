@@ -13,6 +13,7 @@ const TodoItem = ({ todo, changeTodo, removeTodo }) => {
 	const handlerTodoHoverLeave = () => {
 		setTodoHover(false)
 	}
+
 	return (
 		<div
 			className='w-full mb-4 p-5 flex items-center justify-between rounded-2xl bg-zinc-800 '
@@ -26,11 +27,13 @@ const TodoItem = ({ todo, changeTodo, removeTodo }) => {
 				</span>
 			</button>
 			<button
-				className={`${todoHover ? 'opacity-100' : 'opacity-0'}`}
+				className={`${
+					todoHover && todo.isCompleted ? 'opacity-100' : 'opacity-0'
+				}`}
 				onClick={() => removeTodo(todo.id)}
 			>
 				<RxCross1
-					className='text-gray-600 hover:text-red-700 transition-colors ease-in-out duration-300'
+					className='text-gray-600 hover:text-red-700 ease-in-out'
 					size={24}
 				/>
 			</button>

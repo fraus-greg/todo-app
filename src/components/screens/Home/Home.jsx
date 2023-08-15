@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 // Components
 import TodoItem from './item/TodoItem'
+import CreateTodoInput from './CreateTodoInput/CreateTodoInput'
 // Data
-import { commonData } from './commonData'
+import { commonData } from './commonData.js'
 
 const Home = () => {
 	const initialData = JSON.parse(localStorage.getItem('todos')) || commonData
@@ -24,6 +25,7 @@ const Home = () => {
 		const copy = [...todos]
 		setTodos(copy.filter((todo) => todo.id !== id))
 	}
+
 	let todosList = todos.map((todo) => {
 		return (
 			<TodoItem
@@ -39,6 +41,7 @@ const Home = () => {
 		<div className='text-white w-1/2 mx-auto'>
 			<h1 className='text-2xl font-bold text-center mb-8'>TODO APP</h1>
 			{todosList}
+			<CreateTodoInput setTodos={setTodos} />
 		</div>
 	)
 }

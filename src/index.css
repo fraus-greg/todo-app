@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+	scroll-behavior: smooth;
+	background-color: #18181b;
+}
 :root {
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
@@ -15,6 +19,11 @@
 * {
 	margin: 0;
 	padding: 0;
+}
 
-	transition: all 0.3s;
+div,
+button,
+input,
+svg {
+	transition: all 150ms;
 }

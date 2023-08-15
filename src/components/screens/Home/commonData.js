@@ -1,16 +1,16 @@
 export const commonData = [
 	{
-		id: 1,
+		id: 'afasfasdfasdd',
 		title: 'Learn Web',
 		isCompleted: false
 	},
 	{
-		id: 2,
+		id: 'gaafbnafdfsdf',
 		title: 'Prepare for school',
 		isCompleted: false
 	},
 	{
-		id: 3,
+		id: 'bhsgjsbnhjglo',
 		title: 'Be able to get up early',
 		isCompleted: false
 	}
