@@ -19,11 +19,12 @@ html {
 * {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 
 div,
 button,
 input,
 svg {
-	transition: all 150ms;
+	transition: all 300ms;
 }

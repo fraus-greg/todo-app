@@ -14,16 +14,27 @@ const Home = () => {
 		localStorage.setItem('todos', JSON.stringify(todos))
 	}, [todos])
 
-	const changeTodo = (id) => {
+	const completeTodo = (id, isEditing) => {
+		if (isEditing === false) {
+			const copy = [...todos]
+			const current = copy.find((todo) => todo.id === id)
+			current.isCompleted = !current.isCompleted
+			setTodos(copy)
+		}
+	}
+
+	const changeTodo = (id, newValue) => {
 		const copy = [...todos]
 		const current = copy.find((todo) => todo.id === id)
-		current.isCompleted = !current.isCompleted
+		current.title = newValue
 		setTodos(copy)
 	}
 
-	const removeTodo = (id) => {
-		const copy = [...todos]
-		setTodos(copy.filter((todo) => todo.id !== id))
+	const removeTodo = (id, isCompleted) => {
+		if (isCompleted) {
+			const copy = [...todos]
+			setTodos(copy.filter((todo) => todo.id !== id))
+		}
 	}
 
 	const sortedTodos = [...todos].sort((a, b) =>
@@ -36,6 +47,7 @@ const Home = () => {
 				key={todo.id}
 				todo={todo}
 				changeTodo={changeTodo}
+				completeTodo={completeTodo}
 				removeTodo={removeTodo}
 			/>
 		)
@@ -45,7 +57,7 @@ const Home = () => {
 		<div className='text-white w-1/2 mx-auto'>
 			<h1 className='text-2xl font-bold text-center mb-8'>TODO APP</h1>
 			{todosList}
-			<CreateTodoInput setTodos={setTodos} />
+			<CreateTodoInput setTodos={setTodos} todos={todos} />
 		</div>
 	)
 }

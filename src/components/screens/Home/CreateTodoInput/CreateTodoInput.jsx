@@ -4,15 +4,17 @@ const CreateTodoInput = ({ setTodos }) => {
   const [title, setTitle] = useState('')
 
   const addTodo = (title) => {
-    setTodos((prev) => [
-      {
-        id: new Date(),
-        title,
-        isCompleted: false
-      },
-      ...prev
-    ])
-    setTitle('')
+    if (title.trim().length !== 0) {
+      setTodos((prev) => [
+        {
+          id: Math.random(),
+          title,
+          isCompleted: false
+        },
+        ...prev
+      ])
+      setTitle('')
+    }
   }
 
   return (
