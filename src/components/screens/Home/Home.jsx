@@ -10,8 +10,12 @@ const Home = () => {
 
 	const [todos, setTodos] = useState(initialData)
 
+	const sortedTodos = [...todos].sort((a, b) =>
+		a.isCompleted !== b.isCompleted ? (a.isCompleted ? 1 : -1) : 0
+	)
+
 	useEffect(() => {
-		localStorage.setItem('todos', JSON.stringify(todos))
+		localStorage.setItem('todos', JSON.stringify(sortedTodos))
 	}, [todos])
 
 	const completeTodo = (id, isEditing) => {
@@ -30,16 +34,10 @@ const Home = () => {
 		setTodos(copy)
 	}
 
-	const removeTodo = (id, isCompleted) => {
-		if (isCompleted) {
-			const copy = [...todos]
-			setTodos(copy.filter((todo) => todo.id !== id))
-		}
+	const removeTodo = (id) => {
+		const copy = [...todos]
+		setTodos(copy.filter((todo) => todo.id !== id))
 	}
-
-	const sortedTodos = [...todos].sort((a, b) =>
-		a.isCompleted !== b.isCompleted ? (a.isCompleted ? 1 : -1) : 0
-	)
 
 	let todosList = sortedTodos.map((todo) => {
 		return (
@@ -54,10 +52,11 @@ const Home = () => {
 	})
 
 	return (
-		<div className='text-white w-1/2 mx-auto'>
-			<h1 className='text-2xl font-bold text-center mb-8'>TODO APP</h1>
-			{todosList}
-			<CreateTodoInput setTodos={setTodos} todos={todos} />
+		<div className='h-screen flex flex-col justify-center items-center gap-4 text-black-color'>
+			<div className='flex flex-col gap-4 w-1/2'>
+				<div className='w-full flex flex-col gap-1'>{todosList}</div>
+				<CreateTodoInput setTodos={setTodos} todos={todos} />
+			</div>
 		</div>
 	)
 }

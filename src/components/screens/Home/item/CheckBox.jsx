@@ -1,15 +1,21 @@
 import React from 'react'
 // Images
-import { BsCheck } from 'react-icons/bs'
+import { BsCheckLg } from 'react-icons/bs'
 
-const CheckBox = ({ isCompleted }) => {
+const CheckBox = ({ id, isCompleted, completeTodo, isEditing }) => {
 	return (
-		<div
-			className={`w-6 h-6 mr-4 border-2 rounded-lg border-blue-500 ${isCompleted ? 'bg-blue-500' : ''
-				} flex items-center justify-center`}
+		<button
+			className={`w-10 h-10 flex items-center justify-center rounded ${isEditing ? 'cursor-default' : ''
+				} ${!isCompleted ? 'hover:bg-[#EBF8F0] hover:border-[#278348]' : ''}`}
+			onClick={() => completeTodo(id, isEditing)}
 		>
-			{isCompleted && <BsCheck size={24} className='text-gray-900' />}
-		</div>
+			<div
+				className={`w-5 h-5 border-1 rounded  border ${isCompleted ? 'bg-[#278348] border-[#278348]' : 'border-[#2A3239] '
+					} flex items-center justify-center `}
+			>
+				{isCompleted && <BsCheckLg size={15} className='text-white' />}
+			</div>
+		</button>
 	)
 }
 

@@ -1,82 +1,65 @@
 import React, { useState } from 'react'
 // Components
 import CheckBox from './CheckBox'
+import ChangeTodoInput from './ChangeTodoInput'
 // Images
-import { RxCross1 } from 'react-icons/rx'
-import { MdEdit } from 'react-icons/md'
+import { LuEdit, LuTrash } from 'react-icons/lu'
 
 const TodoItem = ({ todo, changeTodo, completeTodo, removeTodo }) => {
 	const [todoHover, setTodoHover] = useState(false)
 	const [isEditing, setIsEditing] = useState(false)
 	const [editedTitle, setEditedTitle] = useState(todo.title)
 
-	const handlerTodoHoverEnter = () => {
-		setTodoHover(true)
-	}
-
-	const handlerTodoHoverLeave = () => {
-		setTodoHover(false)
-	}
-
-	const handlerEditClick = () => {
-		setIsEditing(true)
-	}
-
 	return (
 		<div
-			className='w-full mb-4 p-5 flex items-center justify-between rounded-2xl bg-zinc-800 '
-			onMouseEnter={handlerTodoHoverEnter}
-			onMouseLeave={handlerTodoHoverLeave}
+			className='w-full flex items-center rounded-md bg-white '
+			onMouseEnter={() => setTodoHover(true)}
+			onMouseLeave={() => setTodoHover(false)}
 		>
-			<button
-				className={`flex items-center ${isEditing ? 'cursor-default' : ''}`}
-				onClick={() => completeTodo(todo.id, isEditing)}
-			>
+			<div className='w-full p-1.5 flex items-center gap-2'>
 				<div>
-					<CheckBox isCompleted={todo.isCompleted} />
+					<CheckBox
+						id={todo.id}
+						isCompleted={todo.isCompleted}
+						completeTodo={completeTodo}
+						isEditing={isEditing}
+					/>
 				</div>
 				{isEditing ? (
-					<div>
-						<input
-							className='w-full bg-zinc-900 rounded outline-none border-none'
-							type='text'
-							value={editedTitle}
-							onChange={(e) => setEditedTitle(e.target.value)}
-							onKeyDown={(e) =>
-								e.key === 'Enter' &&
-								(changeTodo(todo.id, editedTitle), setIsEditing(false))
-							}
-							// onBlur={handlerSaveClick}
-							autoFocus
-						/>
-					</div>
+					<ChangeTodoInput
+						id={todo.id}
+						editedTitle={editedTitle}
+						setEditedTitle={setEditedTitle}
+						setIsEditing={setIsEditing}
+						changeTodo={changeTodo}
+					/>
 				) : (
-					<span className={`${todo.isCompleted ? 'line-through' : ''}`}>
+					<span className={`w-full h-10 px-1 flex items-center`}>
 						{todo.title}
 					</span>
 				)}
-			</button>
-			<div className='flex items-center justify-between'>
+			</div>
+			<div className='flex gap-2 pr-1 py-1.5'>
+				{!isEditing && (
+					<button
+						className={`group w-10 h-10 flex justify-center items-center rounded ${todoHover ? 'opacity-100' : 'opacity-0 cursor-default'
+							} hover:bg-[#EBF8F0]`}
+						onClick={() => setIsEditing(true)}
+					>
+						<LuEdit
+							className='text-[#97a3af] group-hover:text-[#278348] ease-in-out'
+							size={20}
+						/>
+					</button>
+				)}
 				<button
-					className={`mr-4 ${todoHover ? 'opacity-100' : 'opacity-0 cursor-default'
-						}`}
-					onClick={handlerEditClick}
+					className={`group w-10 h-10 flex justify-center items-center rounded ${todoHover ? 'opacity-100' : 'opacity-0 cursor-default'
+						} hover:bg-red-100`}
+					onClick={() => removeTodo(todo.id)}
 				>
-					<MdEdit
-						className='text-gray-600 hover:text-gray-400 ease-in-out'
-						size={24}
-					/>
-				</button>
-				<button
-					className={`${todoHover && todo.isCompleted
-							? 'opacity-100'
-							: 'opacity-0 cursor-default'
-						}`}
-					onClick={() => removeTodo(todo.id, todo.isCompleted)}
-				>
-					<RxCross1
-						className='text-gray-600 hover:text-red-700 ease-in-out'
-						size={24}
+					<LuTrash
+						className='text-[#97a3af] group-hover:text-red-700 ease-in-out'
+						size={20}
 					/>
 				</button>
 			</div>

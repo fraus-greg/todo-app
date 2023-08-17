@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-	scroll-behavior: smooth;
-	background-color: #18181b;
+body {
+	background-color: #f3f4f5;
 }
+
 :root {
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
@@ -16,10 +16,12 @@ html {
 	-webkit-text-size-adjust: 100%;
 }
 
-* {
+*,
+::after,
+::before {
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
+	border-color: transparent;
 }
 
 div,
