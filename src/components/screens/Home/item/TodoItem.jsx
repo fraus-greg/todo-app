@@ -12,7 +12,7 @@ const TodoItem = ({ todo, changeTodo, completeTodo, removeTodo }) => {
 
 	return (
 		<div
-			className='w-full flex items-center rounded-md bg-white '
+			className={`w-full flex items-center rounded-md bg-white hover:shadow-[0px_0px_4px_0px_rgba(0,0,0,0.02),0px_2px_10px_0px_rgba(0,0,0,0.04),0px_10px_20px_0px_rgba(0,0,0,0.04)]`}
 			onMouseEnter={() => setTodoHover(true)}
 			onMouseLeave={() => setTodoHover(false)}
 		>
@@ -42,8 +42,9 @@ const TodoItem = ({ todo, changeTodo, completeTodo, removeTodo }) => {
 			<div className='flex gap-2 pr-1 py-1.5'>
 				{!isEditing && (
 					<button
-						className={`group w-10 h-10 flex justify-center items-center rounded ${todoHover ? 'opacity-100' : 'opacity-0 cursor-default'
-							} hover:bg-[#EBF8F0]`}
+						className={`group w-10 h-10 flex justify-center items-center rounded ${
+							todoHover ? 'opacity-100' : 'opacity-0 cursor-default'
+						} hover:bg-[#EBF8F0]`}
 						onClick={() => setIsEditing(true)}
 					>
 						<LuEdit
@@ -53,8 +54,9 @@ const TodoItem = ({ todo, changeTodo, completeTodo, removeTodo }) => {
 					</button>
 				)}
 				<button
-					className={`group w-10 h-10 flex justify-center items-center rounded ${todoHover ? 'opacity-100' : 'opacity-0 cursor-default'
-						} hover:bg-red-100`}
+					className={`group w-10 h-10 flex justify-center items-center rounded ${
+						todoHover ? 'opacity-100' : 'opacity-0 cursor-default'
+					} hover:bg-red-100`}
 					onClick={() => removeTodo(todo.id)}
 				>
 					<LuTrash
