@@ -10,21 +10,19 @@ const Home = () => {
 
 	const [todos, setTodos] = useState(initialData)
 
-	const sortedTodos = [...todos].sort((a, b) =>
+	const sortedTodos = [...todos].sort((a, b) => {
 		a.isCompleted !== b.isCompleted ? (a.isCompleted ? 1 : -1) : 0
-	)
+	})
 
 	useEffect(() => {
 		localStorage.setItem('todos', JSON.stringify(sortedTodos))
 	}, [todos])
 
-	const completeTodo = (id, isEditing) => {
-		if (isEditing === false) {
-			const copy = [...todos]
-			const current = copy.find((todo) => todo.id === id)
-			current.isCompleted = !current.isCompleted
-			setTodos(copy)
-		}
+	const completeTodo = (id) => {
+		const copy = [...todos]
+		const current = copy.find((todo) => todo.id === id)
+		current.isCompleted = !current.isCompleted
+		setTodos(copy)
 	}
 
 	const changeTodo = (id, newValue) => {
@@ -52,9 +50,9 @@ const Home = () => {
 	})
 
 	return (
-		<div className='h-screen flex flex-col justify-center items-center gap-4 text-black-color'>
-			<div className='flex flex-col gap-4 w-1/2'>
-				<div className='w-full flex flex-col gap-1'>{todosList}</div>
+		<div className='text-black-color flex h-screen flex-col items-center justify-center gap-4'>
+			<div className='flex w-1/2 flex-col gap-4'>
+				<div className='flex w-full flex-col gap-1'>{todosList}</div>
 				<CreateTodoInput setTodos={setTodos} todos={todos} />
 			</div>
 		</div>

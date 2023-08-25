@@ -7,21 +7,19 @@ const CheckBox = ({ id, isCompleted, completeTodo, isEditing }) => {
 
 	return (
 		<button
-			className={`w-10 h-10 flex items-center justify-center ${
-				isEditing ? 'cursor-default' : ''
-			}`}
-			onClick={() => completeTodo(id, isEditing)}
+			className={`flex h-10 w-10 items-center justify-center ${isEditing ? 'cursor-default' : ''
+				}`}
+			onClick={() => completeTodo(id)}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
 		>
 			<div
-				className={`w-5 h-5 border-1 rounded border ${
-					isCompleted
-						? 'bg-[#278348] border-[#278348]'
+				className={`border-1 h-5 w-5 rounded border ${isCompleted
+						? 'border-[#278348] bg-[#278348]'
 						: isHovered
-						? 'bg-[#EBF8F0] border-[#278348]'
-						: 'border-[#2A3239]'
-				} flex items-center justify-center  `}
+							? 'border-[#278348] bg-[#EBF8F0]'
+							: 'border-[#2A3239]'
+					} flex items-center justify-center  `}
 			>
 				{isCompleted && <BsCheckLg size={15} className='text-white' />}
 			</div>
