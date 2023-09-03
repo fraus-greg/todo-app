@@ -10,9 +10,9 @@ const ChangeTodoInput = ({
   changeTodo
 }) => {
   return (
-    <div className='h-10 relative w-full outline-1 outline outline-[#278348] rounded'>
+    <div className='relative h-10 w-full rounded outline outline-1 outline-[#278348]'>
       <input
-        className='w-full h-full pl-1 pr-12 bg-transparent border-none outline-none select-none'
+        className='h-full w-full select-none border-none bg-transparent pl-1 pr-12 outline-none'
         type='text'
         placeholder=' Rename task'
         value={editedTitle}
@@ -25,14 +25,14 @@ const ChangeTodoInput = ({
         autoFocus
       />
       <button
-        className='group hover:bg-[#EBF8F0] w-10 h-10 absolute top-0 right-0 flex items-center justify-center rounded '
+        className='group absolute right-0 top-0 flex h-10 w-10 items-center justify-center rounded transition-all duration-300 hover:bg-[#EBF8F0] dark:hover:bg-green-500 dark:hover:bg-opacity-10'
         onClick={() => (
           setEditedTitle(''),
           document.querySelector('input[type="text"]').focus()
         )}
       >
         <RxCross1
-          className=' cursor-pointer group-hover:text-[#278348] text-[#97A3AF]'
+          className='cursor-pointer text-[#97A3AF] transition-all duration-300 group-hover:text-[#278348] '
           size={20}
         />
       </button>

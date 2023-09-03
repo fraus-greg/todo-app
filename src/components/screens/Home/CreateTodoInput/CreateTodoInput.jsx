@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { nanoid } from 'nanoid'
 
 const CreateTodoInput = ({ setTodos }) => {
 	const [title, setTitle] = useState('')
@@ -7,7 +8,7 @@ const CreateTodoInput = ({ setTodos }) => {
 		if (title.trim().length !== 0) {
 			setTodos((prev) => [
 				{
-					id: Math.random(),
+					id: nanoid(),
 					title,
 					isCompleted: false
 				},
@@ -19,7 +20,7 @@ const CreateTodoInput = ({ setTodos }) => {
 
 	return (
 		<input
-			className='h-12 py-0.5 pl-1 w-full rounded bg-white border border-[#278348] outline-none'
+			className='h-12 w-full rounded border-none bg-white py-0.5 pl-1 outline-none focus:border-[#278348] dark:bg-neutral-800'
 			type='text'
 			placeholder=' Add a todo'
 			value={title}
