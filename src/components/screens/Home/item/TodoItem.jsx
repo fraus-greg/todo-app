@@ -11,7 +11,7 @@ const TodoItem = ({ todo, changeTodo, completeTodo, removeTodo }) => {
 	const [editedTitle, setEditedTitle] = useState(todo.title)
 
 	return (
-		<div
+		<article
 			className={`flex w-full items-center rounded-md bg-white hover:shadow-[0px_0px_4px_0px_rgba(0,0,0,0.02),0px_2px_10px_0px_rgba(0,0,0,0.04),0px_10px_20px_0px_rgba(0,0,0,0.04)] dark:bg-neutral-800`}
 			onMouseEnter={() => setTodoHover(true)}
 			onMouseLeave={() => setTodoHover(false)}
@@ -42,28 +42,28 @@ const TodoItem = ({ todo, changeTodo, completeTodo, removeTodo }) => {
 			<div className='flex gap-2 py-1.5 pr-1'>
 				{!isEditing && (
 					<button
-						className={`group flex h-10 w-10 items-center justify-center rounded transition-all duration-300 ${todoHover ? 'opacity-100' : 'cursor-default opacity-0'
+						className={`group flex h-10 w-10 items-center justify-center rounded ${todoHover ? 'opacity-100' : 'cursor-default opacity-0'
 							} hover:bg-[#EBF8F0] dark:hover:bg-green-500 dark:hover:bg-opacity-10`}
 						onClick={() => setIsEditing(true)}
 					>
 						<LuEdit
-							className='text-[#97a3af] transition-all duration-300 ease-in-out group-hover:text-[#278348]'
+							className='text-[#97a3af] transition-all group-hover:text-[#278348]'
 							size={20}
 						/>
 					</button>
 				)}
 				<button
-					className={`group flex h-10 w-10 items-center justify-center rounded transition-all duration-300 ${todoHover ? 'opacity-100' : 'cursor-default opacity-0'
+					className={`group flex h-10 w-10 items-center justify-center rounded ${todoHover ? 'opacity-100' : 'cursor-default opacity-0'
 						} hover:bg-red-100 dark:hover:bg-red-500 dark:hover:bg-opacity-10`}
 					onClick={() => removeTodo(todo.id)}
 				>
 					<LuTrash
-						className='text-[#97a3af] transition-all duration-300 ease-in-out group-hover:text-red-700'
+						className='text-[#97a3af] transition-all group-hover:text-red-700'
 						size={20}
 					/>
 				</button>
 			</div>
-		</div>
+		</article>
 	)
 }
 

@@ -18,16 +18,6 @@ const Home = () => {
 		localStorage.setItem('todos', JSON.stringify(sortedTodos))
 	}, [todos])
 
-	const toggleTheme = () => {
-		if (localStorage.theme === 'dark') {
-			localStorage.theme = ''
-			document.documentElement.classList.remove('dark')
-		} else {
-			localStorage.theme = 'dark'
-			document.documentElement.classList.add('dark')
-		}
-	}
-
 	const completeTodo = (id) => {
 		const copy = [...todos]
 		const current = copy.find((todo) => todo.id === id)
@@ -60,13 +50,10 @@ const Home = () => {
 	})
 
 	return (
-		<div className='flex h-screen flex-col items-center justify-center gap-4 text-[#2A3239] dark:bg-neutral-900 dark:text-white'>
+		<div className='flex h-screen flex-col items-center justify-center gap-4 bg-[#f3f4f5] text-[#2A3239] dark:bg-neutral-900 dark:text-white'>
 			<div className='flex w-1/2 flex-col gap-4'>
-				<div className='flex w-full flex-col gap-1'>{todosList}</div>
+				<section className='flex w-full flex-col gap-1'>{todosList}</section>
 				<CreateTodoInput setTodos={setTodos} todos={todos} />
-				<button onClick={toggleTheme} className=''>
-					Change Theme
-				</button>
 			</div>
 		</div>
 	)

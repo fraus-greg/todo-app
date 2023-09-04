@@ -25,14 +25,14 @@ const ChangeTodoInput = ({
         autoFocus
       />
       <button
-        className='group absolute right-0 top-0 flex h-10 w-10 items-center justify-center rounded transition-all duration-300 hover:bg-[#EBF8F0] dark:hover:bg-green-500 dark:hover:bg-opacity-10'
+        className='group absolute right-0 top-0 flex h-10 w-10 items-center justify-center rounded hover:bg-[#EBF8F0] dark:hover:bg-green-500 dark:hover:bg-opacity-10'
         onClick={() => (
           setEditedTitle(''),
           document.querySelector('input[type="text"]').focus()
         )}
       >
         <RxCross1
-          className='cursor-pointer text-[#97A3AF] transition-all duration-300 group-hover:text-[#278348] '
+          className='cursor-pointer text-[#97A3AF] transition-all group-hover:text-[#278348] '
           size={20}
         />
       </button>

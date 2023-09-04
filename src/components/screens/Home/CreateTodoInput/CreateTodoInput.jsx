@@ -20,7 +20,7 @@ const CreateTodoInput = ({ setTodos }) => {
 
 	return (
 		<input
-			className='h-12 w-full rounded border-none bg-white py-0.5 pl-1 outline-none focus:border-[#278348] dark:bg-neutral-800'
+			className='h-12 w-full rounded border border-transparent bg-white py-0.5 pl-1 outline-none focus:border-[#278348] dark:bg-neutral-800'
 			type='text'
 			placeholder=' Add a todo'
 			value={title}
