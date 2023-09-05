@@ -11,7 +11,7 @@ const Home = () => {
 	const [todos, setTodos] = useState(initialData)
 
 	const sortedTodos = [...todos].sort((a, b) => {
-		a.isCompleted !== b.isCompleted ? (a.isCompleted ? 1 : -1) : 0
+		return a.isCompleted !== b.isCompleted ? (a.isCompleted ? 1 : -1) : 0
 	})
 
 	useEffect(() => {
