@@ -52,7 +52,13 @@ const Home = () => {
 	return (
 		<div className='flex h-screen flex-col items-center justify-center gap-4 bg-[#f3f4f5] text-[#2A3239] dark:bg-neutral-900 dark:text-white'>
 			<div className='flex w-1/2 flex-col gap-4'>
-				<section className='flex w-full flex-col gap-1'>{todosList}</section>
+				<section className='flex w-full flex-col gap-1'>
+					{todos.length === 0 ? (
+						<span className='text-center'>You haven't todos</span>
+					) : (
+						todosList
+					)}
+				</section>
 				<CreateTodoInput setTodos={setTodos} todos={todos} />
 			</div>
 		</div>
